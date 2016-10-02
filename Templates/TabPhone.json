@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "stringProperties": [
+        { "name": "TAB123654" },
+        { "product": "Cisco Jabber for Tablet" },
+        { "class": "Phone" },
+        { "protocol": "SIP" },
+        { "protocolSide": "User" },
+        { "useTrustedRelayPoint": "Default" },
+        { "ignorePresentationIndicators": "false" },
+        { "packetCaptureMode": "None" },
+        { "certificateOperation": "No Pending Operation" },
+        { "deviceMobilityMode": "Default" }
+    ],
+    "xfkTypes": [
+        { "devicePoolName": "Default" },
+        { "commonPhoneConfigName": "Standard Common Phone Profile" },
+        { "locationName": "Hub_None" },
+        { "phoneTemplateName": "Standard Jabber for Tablet" }
+    ]
+}
