@@ -15,9 +15,13 @@
         "commonPhoneConfigName": "Standard Common Phone Profile",
         "locationName": "Hub_None",
         "phoneTemplateName": "Standard Jabber for Tablet",
-        "ownerUserName": "user01"
+        "ownerUserName": "user02"
     },
     "lines": [
-        "1006"
+        {
+            "directoryNumber": "1006",
+            "routePartition": "",
+            "endUser": "user02"
+        }
     ]
 }

@@ -28,7 +28,7 @@ function Set-ObjectProperty
             }
             $Object.${propName} = $xfk
         }
-        elseif ($Object.PSObject.Properties[$propName].TypeNameOfValue -like "*String")
+        elseif ($Object.PSObject.Properties[$propName].TypeNameOfValue -like "System.String*")
         {
             $Object.${propName} = $propValue
         }
