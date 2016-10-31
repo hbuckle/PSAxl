@@ -42,14 +42,27 @@ InModuleScope PSAxl {
             $result = $modifiedPhone.callingSearchSpaceName.uuid + $modifiedPhone.primaryPhoneName.uuid + $modifiedPhone.dialRulesName.uuid
             $result | Should BeExactly "2f9da9f6-6c80-4b7e-b646-dc109db37baaf9d6a997-04a9-4fa8-a73b-45f9c74ac33a1482a6b2-2d82-4b6a-bd7b-983ccac5353f"
         }
-        It "Sets throws on a non string of xfk property" {
+        It "Sets other AXL types" {
+            $phone = New-Object AXLSharp.XPhone
+            $confAccess = [AXLSharp.XPhoneConfidentialAccess]::new()
+            $confAccess.confidentialAccessLevel = "level"
+            $confAccess.confidentialAccessMode = "mode"
+            $props = @{
+                name = "name"
+                confidentialAccess = $confAccess
+            }
+            $modifiedPhone = Set-ObjectProperty -Object $phone -Properties $props
+            $result = $modifiedPhone.confidentialAccess.confidentialAccessLevel + $modifiedPhone.confidentialAccess.confidentialAccessMode
+            $result | Should BeExactly "levelmode" 
+        }
+        It "Throws if the property can not be set" {
             $phone = New-Object AXLSharp.XPhone
             $props = @{
                 name = "name"
-                primaryPhoneName = "f9d6a997-04a9-4fa8-a73b-45f9c74ac33a"
-                confidentialAccess = "confidentialAccess"
+                primaryPhoneName = "primaryPhoneName"
+                vendorConfig = "vendorConfig"
             }
-            { $modifiedPhone = Set-ObjectProperty -Object $phone -Properties $props } | Should Throw "Cannot set property of type"
+            { Set-ObjectProperty -Object $phone -Properties $props } | Should Throw "Cannot set the property vendorConfig"
         }
     }
 }

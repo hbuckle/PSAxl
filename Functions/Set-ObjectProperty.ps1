@@ -28,14 +28,13 @@ function Set-ObjectProperty
             }
             $Object.${propName} = $xfk
         }
-        elseif ($Object.PSObject.Properties[$propName].TypeNameOfValue -like "System.String*")
+        elseif ($Object.PSObject.Properties[$propName].TypeNameOfValue -eq $propValue.GetType().FullName)
         {
             $Object.${propName} = $propValue
         }
         else
         {
-            $type = $Object.PSObject.Properties[$propName].TypeNameOfValue
-            Throw "Cannot set property of type $type"
+            Throw "Cannot set the property $propName"
         }
     }
     return $Object
